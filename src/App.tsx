@@ -48,8 +48,8 @@ export default function App() {
 					// appService: new DifyAppService(),
 					appConfig: {
 						requestConfig: {
-							apiBase: 'http://124.128.52.227:1999/v1',
-							apiKey: 'app-PAygttJZ8hviNvINTdg5hp4z',
+							apiBase: '',
+							apiKey: '',
 						},
 					},
 				}}
