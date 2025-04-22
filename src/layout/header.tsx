@@ -44,7 +44,7 @@ export default function HeaderLayout(props: IHeaderLayoutProps) {
 			<CenterTitleWrapper>{title}</CenterTitleWrapper>
 
 			{/* 右侧图标 */}
-			<HeaderSiderIcon align="right">{rightIcon || <GithubIcon />}</HeaderSiderIcon>
+			{/*<HeaderSiderIcon align="right">{rightIcon || <GithubIcon />}</HeaderSiderIcon>*/}
 		</div>
 	)
 }

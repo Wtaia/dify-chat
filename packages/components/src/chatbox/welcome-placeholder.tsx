@@ -1,22 +1,20 @@
 import {
-	AndroidFilled,
 	CommentOutlined,
-	EllipsisOutlined,
 	FireOutlined,
 	HeartOutlined,
 	ReadOutlined,
-	ShareAltOutlined,
 	SmileOutlined,
 } from '@ant-design/icons'
 import { Prompts, Welcome } from '@ant-design/x'
 import { IGetAppParametersResponse } from '@dify-chat/api'
 import { IDifyAppItem } from '@dify-chat/core'
 import { useIsMobile } from '@dify-chat/helpers'
-import { Button, FormInstance, GetProp, Space } from 'antd'
+import { FormInstance, GetProp, Space } from 'antd'
 import classNames from 'classnames'
 import { useMemo } from 'react'
 
 import AppInputWrapper from './app-input-wrapper'
+import {LogoIcon} from "../../../../src/components/logo";
 
 const renderTitle = (icon: React.ReactElement, title: string) => (
 	<Space align="start">
@@ -75,7 +73,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 		const DefaultPlaceholderPromptsItems = [
 			{
 				key: '1',
-				label: renderTitle(<FireOutlined style={{ color: '#FF4D4F' }} />, 'Hot Topics'),
+				label: renderTitle(<FireOutlined style={{ color: '#FF4D4F' }} />, '热点问题'),
 				description: 'What are you interested in?',
 				children: [
 					{
@@ -119,8 +117,8 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 			return [
 				{
 					key: 'remote',
-					label: renderTitle(<FireOutlined style={{ color: '#FF4D4F' }} />, 'Hot Topics'),
-					description: 'What are you interested in?',
+					label: renderTitle(<FireOutlined style={{ color: '#FF4D4F' }} />, '热点问题'),
+					description: '想查看持股企业的具体信息?',
 					children: appParameters.suggested_questions.map(item => {
 						return {
 							key: 'remote',
@@ -151,17 +149,17 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 						variant="borderless"
 						icon={
 							<div className="flex items-center justify-center rounded-[50%] w-16 h-16 border-gray-100 border-solid border-[1px] bg-[#eff0f5]">
-								<AndroidFilled className="text-3xl text-primary" />
+								<LogoIcon/>
 							</div>
 						}
-						title={appParameters?.opening_statement || "Hello, I'm Dify Chat"}
-						description="Base on Dify API, Dify Chat is a web app that can interact with AI."
-						extra={
-							<Space>
-								<Button icon={<ShareAltOutlined />} />
-								<Button icon={<EllipsisOutlined />} />
-							</Space>
-						}
+						title={appParameters?.opening_statement || "你好，我是财欣智能功能导航助手"}
+						description="输入您想了解的问题"
+						// extra={
+						// 	<Space>
+						// 		<Button icon={<ShareAltOutlined />} />
+						// 		<Button icon={<EllipsisOutlined />} />
+						// 	</Space>
+						// }
 					/>
 				) : null}
 

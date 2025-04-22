@@ -16,6 +16,7 @@ import { MessageSender } from '../message-sender'
 import MessageContent from './message/content'
 import MessageFooter from './message/footer'
 import { WelcomePlaceholder } from './welcome-placeholder'
+import {LogoIcon} from "../../../../src/components/logo";
 
 export interface ChatboxProps {
 	/**
@@ -121,7 +122,7 @@ export const Chatbox = (props: ChatboxProps) => {
 	const roles: GetProp<typeof Bubble.List, 'roles'> = {
 		ai: {
 			placement: 'start',
-			avatar: !isMobile ? { icon: <RobotOutlined />, style: { background: '#fde3cf' } } : undefined,
+			avatar: !isMobile ? { icon: <LogoIcon/>, style: { background: '#fde3cf' } } : undefined,
 			style: isMobile
 				? undefined
 				: {
@@ -131,20 +132,21 @@ export const Chatbox = (props: ChatboxProps) => {
 		},
 		user: {
 			placement: 'end',
-			avatar: !isMobile
-				? {
-						icon: <UserOutlined />,
-						style: {
-							background: '#87d068',
-						},
-					}
-				: undefined,
+			// avatar: !isMobile
+			// 	? {
+			// 			// icon: <UserOutlined />,
+			// 			style: {
+			// 				background: '#87d068',
+			// 			},
+			// 		}
+			// 	: undefined,
 			style: isMobile
 				? undefined
 				: {
 						// 减去一个头像的宽度
 						maxWidth: 'calc(100% - 44px)',
-						marginLeft: '44px',
+						marginLeft: '0px',
+						color: 'white'
 					},
 		},
 	}
@@ -205,7 +207,10 @@ export const Chatbox = (props: ChatboxProps) => {
 	}, [deferredItems])
 
 	return (
-		<div className="w-full h-full overflow-hidden my-0 mx-auto box-border flex flex-col gap-4 relative bg-white">
+		<div
+			className="w-full h-full overflow-hidden my-0 mx-auto box-border flex flex-col gap-4 relative bg-white"
+			style={{ background: 'linear-gradient(to bottom, #E1F2FE, #FFFFFF)' }}
+		>
 			<div
 				className="w-full h-full overflow-auto pt-4 pb-48"
 				ref={scrollContainerRef}
@@ -269,7 +274,7 @@ export const Chatbox = (props: ChatboxProps) => {
 					}}
 				>
 					{/* 🌟 输入框 */}
-					<div className="px-3">
+					<div className="px-3" style={{marginBottom: '50px'}}>
 						<MessageSender
 							appParameters={appParameters}
 							onSubmit={async (...params) => {
@@ -284,9 +289,6 @@ export const Chatbox = (props: ChatboxProps) => {
 							audio2TextApi={(...params) => difyApi.audio2Text(...params)}
 							onCancel={onCancel}
 						/>
-					</div>
-					<div className="text-gray-400 text-sm text-center h-8 leading-8">
-						内容由 AI 生成, 仅供参考
 					</div>
 				</div>
 			</div>

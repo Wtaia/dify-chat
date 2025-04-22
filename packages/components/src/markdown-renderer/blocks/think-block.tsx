@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import {CheckOutlined} from "@ant-design/icons";
 
 const hasEndThink = (children: any): boolean => {
   if (typeof children === 'string')
@@ -15,7 +16,7 @@ const hasEndThink = (children: any): boolean => {
 
 const removeEndThink = (children: any): any => {
   if (typeof children === 'string')
-    return children.replace('[ENDTHINKFLAG]', '')
+    return children.replace('Thinking...', '')
 
   if (Array.isArray(children))
     return children.map(child => removeEndThink(child))
@@ -65,33 +66,34 @@ const useThinkTimer = (children: JSX.Element) => {
 export const ThinkBlock = ({ children, ...props }: any) => {
   const { elapsedTime, isComplete } = useThinkTimer(children)
   const displayContent = removeEndThink(children)
-
-  if (!(props['data-think'] ?? false))
-    return (<details {...props}>{children}</details>)
+  // if (!(props['data-think'] ?? false))
+  //   return (<details {...props}>{children}</details>)
 
   return (
     <details {...(!isComplete && { open: true })} className="group">
       <summary className="flex cursor-pointer select-none list-none items-center whitespace-nowrap font-bold text-gray-500">
         <div className="flex shrink-0 items-center">
-          <svg
-            className="mr-2 h-3 w-3 transition-transform duration-500 group-open:rotate-90"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-          {isComplete ? `已深度思考(${elapsedTime.toFixed(1)}s)` : `深度思考中...(${elapsedTime.toFixed(1)}s)`}
+          {/*<svg*/}
+          {/*  className="mr-2 h-3 w-3 transition-transform duration-500 group-open:rotate-90"*/}
+          {/*  fill="none"*/}
+          {/*  stroke="currentColor"*/}
+          {/*  viewBox="0 0 24 24"*/}
+          {/*>*/}
+          {/*  <path*/}
+          {/*    strokeLinecap="round"*/}
+          {/*    strokeLinejoin="round"*/}
+          {/*    strokeWidth={2}*/}
+          {/*    d="M9 5l7 7-7 7"*/}
+          {/*  />*/}
+          {/*</svg>*/}
+          {/*{isComplete ? `已深度思考(${elapsedTime.toFixed(1)}s)` : `深度思考中...(${elapsedTime.toFixed(1)}s)`}*/}
+					<CheckOutlined style={{ cursor: 'pointer', color: 'blue', margin: '5px' }} />
+          <h4>已深度思考</h4>
         </div>
       </summary>
-      <div className={`border-l mt-1 rounded-lg border-gray-300 text-gray-500 p-3 bg-gray-50`}>
-        {displayContent}
-      </div>
+			<div className={`border-l mt-1 rounded-lg border-gray-300 text-gray-500 p-3 bg-gray-50`} style={{background: '#F4FAFF', fontSize: '15px', borderLeft: '7px solid blue'}}>
+				{displayContent}
+			</div>
     </details>
   )
 }

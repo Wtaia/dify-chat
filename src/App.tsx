@@ -42,10 +42,16 @@ export default function App() {
 		>
 			<DifyChatProvider
 				value={{
-					mode: 'multiApp',
+					mode: 'singleApp',
 					user: userId,
 					// 默认使用 localstorage, 如果需要使用其他存储方式，可以实现 DifyAppStore 接口后传入，异步接口实现参考 src/services/app/restful.ts
-					appService: new DifyAppService(),
+					// appService: new DifyAppService(),
+					appConfig: {
+						requestConfig: {
+							apiBase: 'http://124.128.52.227:1999/v1',
+							apiKey: 'app-PAygttJZ8hviNvINTdg5hp4z',
+						},
+					},
 				}}
 			>
 				<LayoutIndex />

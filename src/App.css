@@ -18,19 +18,35 @@
 
 	&[role='user'] {
 		.ant-bubble-content {
-			background-color: #efeffd;
+			background-color: #1567F9;
+			border-radius: 4px;
+			color: white;
+		}
+		p {
+			color: white;
+		}
+	}
+	&[role='ai'] {
+		.ant-bubble-content {
+			background-color: white;
 			color: #fff;
+			border-radius: 4px;
 		}
 	}
 
 	p {
 		margin-top: 0.5rem !important;
 		margin-bottom: 0.5rem !important;
+		font-size: 16px;
 	}
 
 	pre {
 		background-color: #fff;
-		border-radius: 8px;
+		border-radius: 4px;
+	}
+
+	li {
+		font-size: 16px;
 	}
 }
 
@@ -44,14 +60,15 @@ hr {
 h3 {
 	margin-top: 0.5rem !important;
 	margin-bottom: 0.5rem !important;
-	font-size: 18px !important;
+	font-size: 20px !important;
 }
 
 body {
 	margin: 0;
 	color: #333;
-	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Roboto', sans-serif; /* 使用 Roboto 字体 */
 	background: white;
+	/*font-weight: bold;*/
 }
 
 .content {

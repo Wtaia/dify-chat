@@ -111,10 +111,10 @@ export default function MessageContent(props: IMessageContentProps) {
 			/>
 
 			{/* 工作流执行日志 */}
-			<WorkflowLogs
-				items={workflows?.nodes || []}
-				status={workflows?.status}
-			/>
+			{/*<WorkflowLogs*/}
+			{/*	items={workflows?.nodes || []}*/}
+			{/*	status={workflows?.status}*/}
+			{/*/>*/}
 
 			{/* 消息附件列表 */}
 			{files?.length ? (

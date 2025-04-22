@@ -1,13 +1,14 @@
 import { GithubOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 
-import LogoImage from '@/assets/images/logo.png'
+// import LogoImage from '@/assets/images/logo.png'
+// import LogoImage from '../assets/images/logo.png'
 
 export const LogoIcon = () => {
 	return (
 		<img
-			className="w-5 h-5 inline-block"
-			src={LogoImage}
+			// className="w-5 h-5 inline-block"
+			src={'../assets/images/logo.png'}
 			draggable={false}
 			alt="logo"
 		/>
@@ -46,12 +47,12 @@ export const Logo = (props: ILogoProps) => {
 			<div className="h-full flex items-center flex-1 overflow-hidden">
 				<img
 					className="w-8 h-8 inline-block"
-					src={LogoImage}
+					src={'../assets/images/logo.png'}
 					draggable={false}
 					alt="logo"
 				/>
 				{!hideText ? (
-					<span className="inline-block my-0 ml-3 font-bold text-lg">Dify Chat</span>
+					<span className="inline-block my-0 ml-3 font-bold text-lg">智能问答</span>
 				) : null}
 			</div>
 			{!hideGithubIcon && (

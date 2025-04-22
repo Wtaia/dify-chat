@@ -1,5 +1,5 @@
-import { AndroidFilled } from '@ant-design/icons'
 import { Tag } from 'antd'
+import {LogoIcon} from "../../../../src/components/logo";
 
 interface IAppInfoProps {
 	info: {
@@ -17,9 +17,9 @@ export function AppInfo(props: IAppInfoProps) {
 	return (
 		<div className="text-default pt-3">
 			<div className="flex items-center px-4 mt-3">
-				<div className="bg-[#ffead5] rounded-lg p-2">
-					<AndroidFilled className="text-gray-700" />
-				</div>
+				{/*<div className="bg-[#ffead5] rounded-lg p-2" style={{width:'5px' ,height:'5px'}}>*/}
+					{/*<LogoIcon />*/}
+				{/*</div>*/}
 				<div className="ml-3 text-default text-sm truncate">{info.name}</div>
 			</div>
 			{info.tags ? (

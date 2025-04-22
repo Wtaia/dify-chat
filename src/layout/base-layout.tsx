@@ -222,53 +222,53 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 					className={`w-full h-screen ${styles.layout} flex flex-col overflow-hidden bg-[#eff0f5]`}
 				>
 					{/* 头部 */}
-					<HeaderLayout
-						title={appInfo ? renderCenterTitle?.(appInfo) : null}
-						rightIcon={
-							isMobile ? (
-								<Dropdown
-									menu={{
-										items: [
-											{
-												key: 'add_conversation',
-												icon: <PlusCircleOutlined />,
-												label: '新建对话',
-												onClick: () => {
-													onAddConversation()
-												},
-											},
-											{
-												type: 'divider',
-											},
-											{
-												type: 'group',
-												label: '历史对话',
-												children: conversations?.length
-													? conversations.map(item => {
-															return {
-																key: item.id,
-																label: item.name,
-																onClick: () => {
-																	setCurrentConversationId(item.id)
-																},
-															}
-														})
-													: [
-															{
-																key: 'no_conversation',
-																label: '暂无历史对话',
-																disabled: true,
-															},
-														],
-											},
-										],
-									}}
-								>
-									<MenuOutlined className="text-xl" />
-								</Dropdown>
-							) : null
-						}
-					/>
+					{/*<HeaderLayout*/}
+					{/*	title={appInfo ? renderCenterTitle?.(appInfo) : null}*/}
+					{/*	rightIcon={*/}
+					{/*		isMobile ? (*/}
+					{/*			<Dropdown*/}
+					{/*				menu={{*/}
+					{/*					items: [*/}
+					{/*						{*/}
+					{/*							key: 'add_conversation',*/}
+					{/*							icon: <PlusCircleOutlined />,*/}
+					{/*							label: '新建对话',*/}
+					{/*							onClick: () => {*/}
+					{/*								onAddConversation()*/}
+					{/*							},*/}
+					{/*						},*/}
+					{/*						{*/}
+					{/*							type: 'divider',*/}
+					{/*						},*/}
+					{/*						{*/}
+					{/*							type: 'group',*/}
+					{/*							label: '历史对话',*/}
+					{/*							children: conversations?.length*/}
+					{/*								? conversations.map(item => {*/}
+					{/*										return {*/}
+					{/*											key: item.id,*/}
+					{/*											label: item.name,*/}
+					{/*											onClick: () => {*/}
+					{/*												setCurrentConversationId(item.id)*/}
+					{/*											},*/}
+					{/*										}*/}
+					{/*									})*/}
+					{/*								: [*/}
+					{/*										{*/}
+					{/*											key: 'no_conversation',*/}
+					{/*											label: '暂无历史对话',*/}
+					{/*											disabled: true,*/}
+					{/*										},*/}
+					{/*									],*/}
+					{/*						},*/}
+					{/*					],*/}
+					{/*				}}*/}
+					{/*			>*/}
+					{/*				<MenuOutlined className="text-xl" />*/}
+					{/*			</Dropdown>*/}
+					{/*		) : null*/}
+					{/*	}*/}
+					{/*/>*/}
 
 					{/* Main */}
 					<div className="flex-1 overflow-hidden flex rounded-3xl bg-white">
@@ -337,7 +337,7 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 													items={conversations.map(item => {
 														return {
 															key: item.id,
-															label: item.name,
+															label: item.name == 'New conversation' ? '新对话' : item.name,
 														}
 													})}
 													activeKey={currentConversationId}
