@@ -8,7 +8,8 @@ export const LogoIcon = () => {
 	return (
 		<img
 			// className="w-5 h-5 inline-block"
-			src={'../assets/images/logo.png'}
+			// src='../assets/images/logo.png'
+			src='https://free4.yunpng.top/2025/04/22/68076d3f95f86.png'
 			draggable={false}
 			alt="logo"
 		/>
@@ -47,7 +48,8 @@ export const Logo = (props: ILogoProps) => {
 			<div className="h-full flex items-center flex-1 overflow-hidden">
 				<img
 					className="w-8 h-8 inline-block"
-					src={'../assets/images/logo.png'}
+					// src='../assets/images/logo.png'
+					src='https://free4.yunpng.top/2025/04/22/68076d3f95f86.png'
 					draggable={false}
 					alt="logo"
 				/>

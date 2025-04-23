@@ -14,7 +14,6 @@ import classNames from 'classnames'
 import { useMemo } from 'react'
 
 import AppInputWrapper from './app-input-wrapper'
-import {LogoIcon} from "../../../../src/components/logo";
 
 const renderTitle = (icon: React.ReactElement, title: string) => (
 	<Space align="start">
@@ -145,22 +144,31 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				})}
 			>
 				{showPrompts ? (
-					<Welcome
-						variant="borderless"
-						icon={
-							<div className="flex items-center justify-center rounded-[50%] w-16 h-16 border-gray-100 border-solid border-[1px] bg-[#eff0f5]">
-								<LogoIcon/>
-							</div>
-						}
-						title={appParameters?.opening_statement || "你好，我是财欣智能功能导航助手"}
-						description="输入您想了解的问题"
-						// extra={
-						// 	<Space>
-						// 		<Button icon={<ShareAltOutlined />} />
-						// 		<Button icon={<EllipsisOutlined />} />
-						// 	</Space>
-						// }
-					/>
+					<>
+						<Welcome
+							variant="borderless"
+							icon={
+								<div className="flex items-center justify-center rounded-[50%] w-16 h-16 border-gray-100 border-solid border-[1px] bg-[#eff0f5]">
+									{/*<LogoIcon/>*/}
+									<img
+										// className="w-5 h-5 inline-block"
+										// src='../assets/images/logo.png'
+										src='https://free4.yunpng.top/2025/04/22/68076d3f95f86.png'
+										draggable={false}
+										alt="logo"
+									/>
+								</div>
+							}
+							title={appParameters?.opening_statement || "您好，我是财欣智能功能导航助手"}
+							description="请输入您想了解的“数智财欣”平台功能有关信息"
+							// extra={
+							// 	<Space>
+							// 		<Button icon={<ShareAltOutlined />} />
+							// 		<Button icon={<EllipsisOutlined />} />
+							// 	</Space>
+							// }
+						/>
+					</>
 				) : null}
 
 				{/* 应用输入参数 */}
@@ -174,25 +182,30 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				/>
 
 				{showPrompts ? (
-					<Prompts
-						className="mt-4"
-						title="问一问："
-						vertical={isMobile}
-						items={placeholderPromptsItems}
-						styles={{
-							list: {
-								width: '100%',
-							},
-							item: isMobile
-								? {
+					<div style={{width: '100%'}}>
+						<Prompts
+							className="mt-4"
+							title="问一问："
+							vertical={isMobile}
+							items={placeholderPromptsItems}
+							styles={{
+								list: {
+									width: '100%',
+								},
+								item: isMobile
+									? {
 										width: '100%',
 									}
-								: {
+									: {
 										flex: 1,
 									},
-						}}
-						onItemClick={onPromptItemClick}
-					/>
+							}}
+							onItemClick={onPromptItemClick}
+						/>
+						<div style={{width: '100%'}}>
+							<img src='https://free4.yunpng.top/2025/04/22/68076b88e6e8e.jpg' style={{width: '100%', height: 'auto', borderRadius: '4px', marginTop: '4px' }}/>
+						</div>
+					</div>
 				) : null}
 			</Space>
 		</div>

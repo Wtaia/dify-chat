@@ -1,4 +1,3 @@
-import { RobotOutlined, UserOutlined } from '@ant-design/icons'
 import { Bubble, Prompts } from '@ant-design/x'
 import {
 	DifyApi,
@@ -16,7 +15,6 @@ import { MessageSender } from '../message-sender'
 import MessageContent from './message/content'
 import MessageFooter from './message/footer'
 import { WelcomePlaceholder } from './welcome-placeholder'
-import {LogoIcon} from "../../../../src/components/logo";
 
 export interface ChatboxProps {
 	/**
@@ -122,7 +120,7 @@ export const Chatbox = (props: ChatboxProps) => {
 	const roles: GetProp<typeof Bubble.List, 'roles'> = {
 		ai: {
 			placement: 'start',
-			avatar: !isMobile ? { icon: <LogoIcon/>, style: { background: '#fde3cf' } } : undefined,
+			avatar: !isMobile ? { icon: <img src='https://free4.yunpng.top/2025/04/22/68076d3f95f86.png' draggable={false} alt="logo" />, style: { background: '#fde3cf' } } : undefined,
 			style: isMobile
 				? undefined
 				: {
