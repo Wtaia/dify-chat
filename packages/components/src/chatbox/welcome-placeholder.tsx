@@ -204,7 +204,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 						/>
 						<div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
 							<img
-								src={require('../assets/images/AI智能机器人思维辅导_爱给网_aigei_com.gif')}
+								src="https://s1.imagehub.cc/images/2025/04/24/20d06c98b78e13b219cc0cc1efad7f8e.gif"
 								alt=""
 								style={{ width: '30%', height: 'auto', borderRadius: '4px', marginTop: '4px' }}
 							/>
