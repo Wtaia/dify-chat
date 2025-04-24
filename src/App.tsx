@@ -49,7 +49,7 @@ export default function App() {
 					appConfig: {
 						requestConfig: {
 							apiBase: 'http://124.128.52.227:1999/v1',
-							apiKey: 'app-hI2jD2PFOMvRhz1Hgb5RCbHy',
+							apiKey: 'app-PAygttJZ8hviNvINTdg5hp4z',
 						},
 					},
 				}}

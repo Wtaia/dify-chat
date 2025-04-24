@@ -117,7 +117,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				{
 					key: 'remote',
 					label: renderTitle(<FireOutlined style={{ color: '#FF4D4F' }} />, '热点问题'),
-					description: '想查看持股企业的具体信息?',
+					description: '直接采购程序有哪几个环节?',
 					children: appParameters.suggested_questions.map(item => {
 						return {
 							key: 'remote',
@@ -159,8 +159,8 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 									/>
 								</div>
 							}
-							title={appParameters?.opening_statement || "您好，我是财欣智能功能导航助手"}
-							description="请输入您想了解的“数智财欣”平台功能有关信息"
+							title={appParameters?.opening_statement || "您好，我是财欣智能问答助手"}
+							description="请输入您想了解的企业介绍及制度有关信息"
 							// extra={
 							// 	<Space>
 							// 		<Button icon={<ShareAltOutlined />} />
