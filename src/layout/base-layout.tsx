@@ -1,4 +1,4 @@
-import { MenuOutlined, PlusCircleOutlined, PlusOutlined } from '@ant-design/icons'
+import { FormOutlined, MessageOutlined } from '@ant-design/icons'
 import { XProvider } from '@ant-design/x'
 import {
 	createDifyApiInstance,
@@ -282,19 +282,30 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 								<div
 									className={`hidden md:!flex w-72 h-full flex-col border-0 border-r border-solid border-r-[#eff0f5]`}
 								>
-									{appInfo ? <AppInfo info={appInfo!} /> : null}
-									{/* 添加会话 */}
-									{appConfig ? (
-										<Button
-											onClick={() => {
-												onAddConversation()
-											}}
-											className="h-10 leading-10 rounded-lg border border-solid border-gray-200 mt-3 mx-4 text-default "
-											icon={<PlusOutlined />}
-										>
-											新增对话
-										</Button>
-									) : null}
+									<div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+										{appInfo ? <AppInfo info={appInfo!} /> : null}
+										{/* 添加会话 */}
+										{appConfig ? (
+											<Button
+												onClick={() => {
+													onAddConversation()
+												}}
+												icon={<FormOutlined />}
+												type="text"
+												style={{
+													width: '40%',
+													border: 'none',
+													color: 'blue',
+													display: 'flex',
+													justifyContent: 'center',
+													alignItems: 'center',
+													marginTop: '12px',
+												}}
+											>
+												新建对话
+											</Button>
+										) : null}
+									</div>
 									{/* 🌟 对话管理 */}
 									<div className="px-4 mt-3">
 										<Spin spinning={conversationListLoading}>
@@ -338,6 +349,7 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 														return {
 															key: item.id,
 															label: item.name == 'New conversation' ? '新对话' : item.name,
+															icon: <MessageOutlined />
 														}
 													})}
 													activeKey={currentConversationId}

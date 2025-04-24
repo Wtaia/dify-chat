@@ -185,7 +185,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 					<div style={{width: '100%'}}>
 						<Prompts
 							className="mt-4"
-							title="问一问："
+							// title="问一问："
 							vertical={isMobile}
 							items={placeholderPromptsItems}
 							styles={{
@@ -202,8 +202,12 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 							}}
 							onItemClick={onPromptItemClick}
 						/>
-						<div style={{width: '100%'}}>
-							<img src='https://free4.yunpng.top/2025/04/22/68076b88e6e8e.jpg' style={{width: '100%', height: 'auto', borderRadius: '4px', marginTop: '4px' }}/>
+						<div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+							<img
+								src={require('../assets/images/AI智能机器人思维辅导_爱给网_aigei_com.gif')}
+								alt=""
+								style={{ width: '30%', height: 'auto', borderRadius: '4px', marginTop: '4px' }}
+							/>
 						</div>
 					</div>
 				) : null}
