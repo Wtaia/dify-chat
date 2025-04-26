@@ -133,6 +133,7 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 				}
 			})
 		})
+		onAddConversation()
 	})
 
 	console.log('currentConversationId in render', currentConversationId)
