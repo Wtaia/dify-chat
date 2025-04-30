@@ -26,13 +26,24 @@ export default function App() {
 	const [userId, setUserId] = useState<string>('')
 
 	useMount(() => {
-		// 模拟登录过程获取用户唯一标识
-		const loadFP = async () => {
-			const fp = await FingerPrintJS.load()
-			const result = await fp.get()
-			setUserId(result.visitorId)
+		const params = new URLSearchParams(window.location.search)
+		const userName = params.get('userName')
+		if (userName) {
+			setUserId(userName)
+			window.history.replaceState(
+				{},
+				document.title,
+				window.location.pathname
+			)
+		} else {
+			// 否则使用指纹生成唯一标识
+			const loadFP = async () => {
+				const fp = await FingerPrintJS.load()
+				const result = await fp.get()
+				setUserId(result.visitorId)
+			}
+			loadFP()
 		}
-		loadFP()
 	})
 
 	return (
