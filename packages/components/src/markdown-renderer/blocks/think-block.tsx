@@ -91,7 +91,7 @@ export const ThinkBlock = ({ children, ...props }: any) => {
           <h4>已深度思考</h4>
         </div>
       </summary>
-			<div className={`border-l mt-1 rounded-lg border-gray-300 text-gray-500 p-3 bg-gray-50`} style={{background: '#F4FAFF', fontSize: '15px', borderLeft: '7px solid blue'}}>
+			<div className={`border-l mt-1 rounded-lg border-gray-300 text-gray-500 p-3 bg-gray-50`} style={{background: '#F4FAFF', fontSize: '16px', borderLeft: '7px solid blue'}}>
 				{displayContent}
 			</div>
     </details>
