@@ -18,7 +18,7 @@
 
 	&[role='user'] {
 		.ant-bubble-content {
-			background-color: #1567F9;
+			background-color: #1567f9;
 			border-radius: 4px;
 			color: white;
 		}
@@ -47,6 +47,13 @@
 
 	li {
 		font-size: 16px;
+	}
+
+	img {
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
 	}
 }
 
