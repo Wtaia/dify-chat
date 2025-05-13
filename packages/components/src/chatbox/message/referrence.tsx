@@ -21,7 +21,7 @@ interface IRetrieverResourceGroupedItem {
 interface IMetricItemProps {
 	icon: React.ReactNode
 	title: string
-	value: string | number
+	value: any
 }
 
 /**
