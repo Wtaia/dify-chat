@@ -1,6 +1,7 @@
 import {
 	AimOutlined,
 	FileOutlined,
+	FilePdfOutlined,
 	FileWordOutlined,
 	IeOutlined,
 	ShareAltOutlined,
@@ -130,6 +131,21 @@ const ReferenceItem = (props: IRetrieverResourceGroupedItem) => {
 													value: item.score,
 													visible: !!item.score,
 												},
+												{
+													id: `${item.segment_id}_source_url`,
+													icon: <FilePdfOutlined />,
+													title: `${item.doc_metadata.source_url}`,
+													value: (
+														<a
+															href={item.doc_metadata.source_url}
+															target="_blank"
+															rel="noopener noreferrer"
+														>
+															原文链接
+														</a>
+													),
+													visible: !!item.doc_metadata.source_url,
+												},
 											]
 												.filter(item => {
 													return item.visible
@@ -150,12 +166,26 @@ const ReferenceItem = (props: IRetrieverResourceGroupedItem) => {
 					</Space>
 				}
 			>
-				{props.data_source_type === 'website_crawl' ? (
-					<IeOutlined />
-				) : props.data_source_type === 'upload_file' ? (
-					<FileOutlined />
-				) : null}
-				<span className="cursor-pointer hover:underline ml-1">{props.name}</span>
+				<div className="justify-between w-full">
+					{props.data_source_type === 'website_crawl' ? (
+						<IeOutlined />
+					) : props.data_source_type === 'upload_file' ? (
+						<FileOutlined />
+					) : null}
+					<span className="cursor-pointer hover:underline ml-1">{props.name}</span>
+					{!!props.items[0].doc_metadata.source_url && (
+						<a
+							href={props.items[0].doc_metadata.source_url}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-blue-600 hover:text-blue-800 focus:outline-none"
+							style={{ textDecoration: 'none', marginLeft: '40px' }}
+						>
+							<ShareAltOutlined className="mr-2" />
+							<span>文件原文</span>
+						</a>
+					)}
+				</div>
 			</Popover>
 		</div>
 	)

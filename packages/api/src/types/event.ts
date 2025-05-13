@@ -99,6 +99,10 @@ export interface IRetrieverResource {
 	 * 知识库引用对象创建的时间戳
 	 */
 	created_at: number
+	/**
+	 * 文档元数据
+	 */
+	doc_metadata: any
 }
 
 /**
