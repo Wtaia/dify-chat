@@ -1,33 +1,22 @@
-import { FormOutlined, MessageOutlined } from '@ant-design/icons'
-import { XProvider } from '@ant-design/x'
-import {
-	createDifyApiInstance,
-	DifyApi,
-	IConversationItem,
-	IGetAppInfoResponse,
-	IGetAppParametersResponse,
-} from '@dify-chat/api'
-import { AppInfo, ConversationList } from '@dify-chat/components'
-import {
-	ConversationsContextProvider,
-	IDifyAppItem,
-	IDifyChatContextMultiApp,
-} from '@dify-chat/core'
-import { useDifyChat } from '@dify-chat/core'
-import { isTempId, useIsMobile } from '@dify-chat/helpers'
-import { Button, Dropdown, Empty, message, Spin } from 'antd'
-import { createStyles } from 'antd-style'
-import dayjs from 'dayjs'
-import { useSearchParams } from 'pure-react-router'
-import React, { useMemo, useState } from 'react'
-
-import ChatboxWrapper from '@/components/chatbox-wrapper'
-import { DEFAULT_CONVERSATION_NAME } from '@/constants'
-import { useLatest } from '@/hooks/use-latest'
-import { colors } from '@/theme/config'
-
-import './../App.css'
-import HeaderLayout from './header'
+import { DeleteOutlined, FormOutlined, MessageOutlined } from '@ant-design/icons';
+import { XProvider } from '@ant-design/x';
+import { createDifyApiInstance, DifyApi, IConversationItem, IGetAppInfoResponse, IGetAppParametersResponse } from '@dify-chat/api';
+import { AppInfo, ConversationList } from '@dify-chat/components';
+import { ConversationsContextProvider, IDifyAppItem, IDifyChatContextMultiApp } from '@dify-chat/core';
+import { useDifyChat } from '@dify-chat/core';
+import { isTempId, useIsMobile } from '@dify-chat/helpers';
+import { Button, Empty, FloatButton, message, Spin } from 'antd';
+import { createStyles } from 'antd-style';
+import dayjs from 'dayjs';
+import { useSearchParams } from 'pure-react-router';
+import React, { useMemo, useState } from 'react';
+import ChatboxWrapper from '@/components/chatbox-wrapper';
+import { DEFAULT_CONVERSATION_NAME } from '@/constants';
+import { useLatest } from '@/hooks/use-latest';
+import { colors } from '@/theme/config';
+import './../App.css';
+import HeaderLayout from './header';
+import { sleep } from 'openai/core'
 
 const useStyle = createStyles(({ token, css }) => {
 	return {
@@ -172,6 +161,24 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 	}
 
 	/**
+	 * 清空对话列表
+	 */
+	const clearConversationItems = async () => {
+		try {
+			const deletePromises = conversations.map((item) => {
+				return difyApi?.deleteConversation(item.id);
+			});
+			await Promise.all(deletePromises);
+			message.success('清空会话列表成功');
+		} catch (error) {
+			console.error(error);
+		} finally {
+			await sleep(1000)
+			await getConversationItems(true);
+		}
+	}
+
+	/**
 	 * 添加临时新对话(要到第一次服务器响应有效的对话 ID 时才真正地创建完成)
 	 */
 	const onAddConversation = () => {
@@ -282,6 +289,7 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 								{/* 左侧对话列表 */}
 								<div
 									className={`hidden md:!flex w-72 h-full flex-col border-0 border-r border-solid border-r-[#eff0f5]`}
+									style={{ position: 'relative' }}
 								>
 									<div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
 										{appInfo ? <AppInfo info={appInfo!} /> : null}
@@ -308,7 +316,7 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 										) : null}
 									</div>
 									{/* 🌟 对话管理 */}
-									<div className="px-4 mt-3">
+									<div className="px-4 mt-3" style={{ maxHeight: '100%', overflowY: 'auto' }}>
 										<Spin spinning={conversationListLoading}>
 											{conversations?.length ? (
 												<ConversationList
@@ -369,6 +377,23 @@ const BaseLayout = (props: IBaseLayoutProps) => {
 											)}
 										</Spin>
 									</div>
+
+									{appConfig ? (
+										<FloatButton
+											onClick={() => {
+												clearConversationItems()
+											}}
+											icon={<DeleteOutlined />}
+											style={{
+												position: 'absolute',
+												bottom: '30px',
+												right: '30px',
+												zIndex: 1000,
+											}}
+										>
+											清空对话
+										</FloatButton>
+									) : null}
 								</div>
 
 								{/* 右侧聊天窗口 - 移动端全屏 */}
