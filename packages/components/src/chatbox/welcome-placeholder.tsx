@@ -117,7 +117,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				{
 					key: 'remote',
 					label: renderTitle(<FireOutlined style={{ color: '#FF4D4F' }} />, '热点问题'),
-					description: '直接采购程序有哪几个环节?',
+					description: '',
 					children: appParameters.suggested_questions.map(item => {
 						return {
 							key: 'remote',
@@ -153,14 +153,14 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 									<img
 										// className="w-5 h-5 inline-block"
 										// src='../assets/images/logo.png'
-										src='https://free4.yunpng.top/2025/04/22/68076d3f95f86.png'
+										src="https://free4.yunpng.top/2025/04/22/68076d3f95f86.png"
 										draggable={false}
 										alt="logo"
 									/>
 								</div>
 							}
-							title={appParameters?.opening_statement || "您好，我是财欣智能问答助手"}
-							description="请输入您想了解的企业介绍及制度有关信息"
+							title={appParameters?.opening_statement || '您好，我是财欣智能问答助手'}
+							description=""
 							// extra={
 							// 	<Space>
 							// 		<Button icon={<ShareAltOutlined />} />
@@ -182,7 +182,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 				/>
 
 				{showPrompts ? (
-					<div style={{width: '100%'}}>
+					<div style={{ width: '100%' }}>
 						<Prompts
 							className="mt-4"
 							// title="问一问："
@@ -194,15 +194,22 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 								},
 								item: isMobile
 									? {
-										width: '100%',
-									}
+											width: '100%',
+										}
 									: {
-										flex: 1,
-									},
+											flex: 1,
+										},
 							}}
 							onItemClick={onPromptItemClick}
 						/>
-						<div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+						<div
+							style={{
+								width: '100%',
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+							}}
+						>
 							<img
 								src="https://s1.imagehub.cc/images/2025/04/24/20d06c98b78e13b219cc0cc1efad7f8e.gif"
 								alt=""
