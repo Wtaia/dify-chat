@@ -120,7 +120,18 @@ export const Chatbox = (props: ChatboxProps) => {
 	const roles: GetProp<typeof Bubble.List, 'roles'> = {
 		ai: {
 			placement: 'start',
-			avatar: !isMobile ? { icon: <img src='https://free4.yunpng.top/2025/04/22/68076d3f95f86.png' draggable={false} alt="logo" />, style: { background: '#fde3cf' } } : undefined,
+			avatar: !isMobile
+				? {
+						icon: (
+							<img
+								src="https://s1.imagehub.cc/images/2025/06/05/eea6498dad12cad336763c208c399989.png"
+								draggable={false}
+								alt="logo"
+							/>
+						),
+						style: { background: '#fde3cf' },
+					}
+				: undefined,
 			style: isMobile
 				? undefined
 				: {
@@ -144,7 +155,7 @@ export const Chatbox = (props: ChatboxProps) => {
 						// 减去一个头像的宽度
 						maxWidth: 'calc(100% - 44px)',
 						marginLeft: '0px',
-						color: 'white'
+						color: 'white',
 					},
 		},
 	}
@@ -272,7 +283,10 @@ export const Chatbox = (props: ChatboxProps) => {
 					}}
 				>
 					{/* 🌟 输入框 */}
-					<div className="px-3" style={{marginBottom: '50px'}}>
+					<div
+						className="px-3"
+						style={{ marginBottom: '50px' }}
+					>
 						<MessageSender
 							appParameters={appParameters}
 							onSubmit={async (...params) => {
