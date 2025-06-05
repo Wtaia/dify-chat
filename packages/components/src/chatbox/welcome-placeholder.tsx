@@ -153,7 +153,7 @@ export const WelcomePlaceholder = (props: IWelcomePlaceholderProps) => {
 									<img
 										// className="w-5 h-5 inline-block"
 										// src='../assets/images/logo.png'
-										src="https://free4.yunpng.top/2025/04/22/68076d3f95f86.png"
+										src="https://s1.imagehub.cc/images/2025/06/05/eea6498dad12cad336763c208c399989.png"
 										draggable={false}
 										alt="logo"
 									/>
